@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Do a raw grep in src
+# - .erl, .hrl and .ex files
+# - exclude tests
+# - exclude dependencies
+
+# put arguments in array to preserve single quotes
+REGEX=("${1}")
+grep -nr --color=auto --include="*.?rl" --include="*.ex*" --exclude-dir="test" --exclude-dir="deps" "${REGEX[@]}"

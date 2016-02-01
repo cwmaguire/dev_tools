@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Lookup -define(XXX, ...) macros
+
+# put arguments in array to preserve single quotes
+REGEX=("${1}")
+erlgrep_notest "\-define(${REGEX[@]}"

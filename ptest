@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# remove logs
+# remove CSV exports from tests
+# make with "keep going on failure" (-k)
+# ${1} should be app_name_ (i.e. trailing underscore) or "" (for all tests)
+
+echo "rm -rf logs/* apps/rest/test/www/jobs/*.csv; make -k ${1}tests"
+
+rm -rf logs/* apps/rest/test/www/jobs/*.csv; make -k ${1}tests

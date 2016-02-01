@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# build and look for errors
+
+make 2> make_err | tee make_out | grep "[[:digit:]]\{1,4\}:"

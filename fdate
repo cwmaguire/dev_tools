@@ -1,0 +1,4 @@
+#!/bin/bash
+
+date_=`date | sed "s/[ :]/_/g"`
+echo "$1_$date_"

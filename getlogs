@@ -1,0 +1,23 @@
+#!/bin/bash
+
+dir=${1}_`fdate`
+mkdir $dir
+echo "Copying log files to $dir"
+
+# Copies only log files modified in the last hour
+for name in `ssh $1 "find /var/log/iris -newermt \"-1 hour\""` ; do { scp $1:$name .; }; done ;
+
+# Copies all the log files
+#scp $1:/var/log/iris/* $dir
+
+# If there are any gzipped files in the directory unzip them
+if [ `ls $dir/*.gz | wc -l` -gt 0 ]
+then
+  for zipped in ${dir}/*.gz ; do gunzip $zipped; done;
+else
+  echo "No gzipped files found"
+fi
+#gunzip ${dir}/*.gz
+
+# duh, this won't change the users curr dir
+#cd $dir
