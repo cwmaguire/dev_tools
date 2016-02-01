@@ -19,9 +19,7 @@ grepmake       - run make and grep for errors
 
 Other tools:
 
-fdate          - print out the data as an _ separated string
-
-                 (for unique file names)
+fdate          - print out the data as an _ separated string \(for unique file names\)
 
 getlogs        - download lately modified logs and gunzip if nec.
 
