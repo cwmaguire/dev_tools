@@ -2,4 +2,9 @@
 
 # put arguments in array to preserve single quotes
 REGEX=("${1}")
-grep -nri --color=auto --include "*.app.src" --include "*.config*" "${REGEX[@]}"
+grep -nri \
+     --color=auto \
+     --include "*.app.src" \
+     --include "*.config*" \
+     --include "Makefile*" \
+     "${REGEX[@]}"
