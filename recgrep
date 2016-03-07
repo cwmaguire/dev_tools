@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Lookup -record(XXX, ...) directives
+
+# put arguments in array to preserve single quotes
+REGEX=("${1}")
+grep -nr \
+     --color=auto \
+     --include="*.?rl" \
+     --include="*.ex*" \
+     --exclude-dir="test" \
+     --exclude-dir="deps" \
+     --exclude-dir="_rel" \
+     "\-record(${REGEX[@]}"

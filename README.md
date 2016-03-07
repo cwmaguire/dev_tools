@@ -7,9 +7,17 @@ Grep tools:
 
 erlgrep_notest - grep within .src files but not test files
 
+erlgrep        - link to erlgrep_notest
+
 erlgrep_test   - grep within .src files including test files
 
-confgrep       - grep for something in *.app.src files and .config files
+erltgrep       - link to erlgrep_test
+
+erlgrep_deps   - grep within .src files in dependencies only
+
+erldgrep       - link to erlgrep_deps
+
+confgrep       - grep for something in *.app.src, .config files and Make files
 
 defgrep        - grep for -define(FOO) statements
 
