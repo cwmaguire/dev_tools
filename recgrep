@@ -4,11 +4,6 @@
 
 # put arguments in array to preserve single quotes
 REGEX=("${1}")
-grep -nr \
-     --color=auto \
-     --include="*.?rl" \
-     --include="*.ex*" \
-     --exclude-dir="test" \
-     --exclude-dir="deps" \
-     --exclude-dir="_rel" \
-     "\-record(${REGEX[@]}"
+
+# note that "echo a{b,c}" spits out "ab ac" and the substitution is done by the shell before grep sees it
+grep -nr --color=auto --include=*.{?rl,ex} --exclude-dir={test,deps,_rel} "\-record(${REGEX[@]}"

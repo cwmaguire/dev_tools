@@ -7,4 +7,9 @@
 
 # put arguments in array to preserve single quotes
 REGEX=("${1}")
-grep -nr --color=auto --include="*.?rl" --include="*.ex*" --exclude-dir="deps" "${REGEX[@]}"
+
+#long way
+#grep -nr --color=auto --include="*.?rl" --include="*.ex*" --exclude-dir="deps" "${REGEX[@]}"
+
+# note that "echo a{b,c}" spits out "ab ac" and the substitution is done by the shell before grep sees it
+grep -nr --color=auto --include=*.{?rl,ex} --exclude-dir={deps,_rel,logs} "${REGEX[@]}"

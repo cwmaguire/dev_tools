@@ -5,6 +5,6 @@ REGEX=("${1}")
 grep --line-number \
      --recursive \
      --color=auto \
-     --exclude-dir="release-3.*" \
-     --exclude-dir="old" \
+     --exclude-dir={release-3.*,old} \
      --include="*.sql" "${REGEX[@]}"
+# note that "echo a{b,c}" spits out "ab ac" and the substitution is done by the shell before grep sees it
