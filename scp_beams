@@ -1,0 +1,30 @@
+## Copy all Erlang beams from all the apps in apps/${app}/ebin/*.beam to a remote server
+
+## make sure all the app directories exist in ~/temp_ebin/
+## (takes forever! Probably because it opens a new ssh tunnel for each)
+#for f in $(find apps -type d | cut -d / --fields=2 | uniq); do ssh exo "mkdir -p ~/temp_ebin/${f}"; done
+
+## Experiment to list all the files and parts
+
+## for f in $(find apps -name "*.beam" -newermt "2017-04-03 11:30:00")
+## do
+##   path=${f%/*.beam};
+##   append=${path%/*};
+##   app=${append%*/};
+##   file=${f##*/};
+##   echo $path, $file, $append, $app;
+## done
+
+for f in $(find apps/*/ebin -name "*.beam" | cut -d / -f 2 | uniq)
+  do
+  for g in $(find apps/$f -name "*.beam")
+    do
+    #echo $f - ${g##*/};
+
+    # concat all files in directory together
+    h="${h} apps/${f}/ebin/${g##*/}";
+  done;
+  echo "Copying $h to exo:~/temp_ebin/${f}/";
+  scp $h exo:~/temp_ebin/${f}/
+  h="";
+done
