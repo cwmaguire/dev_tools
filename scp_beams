@@ -2,7 +2,7 @@
 
 ## make sure all the app directories exist in ~/temp_ebin/
 ## (takes forever! Probably because it opens a new ssh tunnel for each)
-#for f in $(find apps -type d | cut -d / --fields=2 | uniq); do ssh exo "mkdir -p ~/temp_ebin/${f}"; done
+#for f in $(find apps -type d -not -name apps | cut -d / --fields=2 | uniq); do ssh exo "mkdir -p ~/temp_ebin/${f}"; done
 
 ## Experiment to list all the files and parts
 
