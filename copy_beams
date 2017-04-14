@@ -1,0 +1,22 @@
+## Copy all wakeup server ebins from home to /opt/iris
+
+## specify the app dir on the command line
+
+for f in $(find /home/cmaguire/temp_ebin/ -type d)
+  do
+  #echo '$f' is ${f};
+
+  source=${f##*/}
+  #echo '$source' is $source
+
+  d=($(find ${1}/lib/${source}* -type d));
+  #echo '$d' is ${d};
+
+  d=${d[0]};
+  #echo now '$d' is ${d}
+
+  if [ -d $d ]; then
+    echo sudo cp -uv $f/*.beam $d/
+    sudo cp -uv $f/*.beam $d/
+  fi
+done
